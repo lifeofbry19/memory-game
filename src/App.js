@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import React, { useState, useEffect } from "react";
+import CardDisplay from "./components/CardDisplay";
 
 function App() {
+  const [cards, setCards] = useState([
+    "Harry",
+    "Ginny",
+    "Hermione",
+    "Voldemort",
+    "Dumbledore",
+    "Dobby",
+    "Ron",
+    "Draco",
+    "Snape",
+    "Sirius",
+    "Fred",
+    "George",
+  ]);
+
+  const [selectedCards, setSelectedCards] = useState([]);
+
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
+  useEffect(() => {
+    if (score > highScore) {
+      setHighScore(score);
+    }
+  }, [score]);
+
+  /* do some shuffling
+  function shuffle() {
+    const newArr = cards.map(card => {
+
+    })
+  }
+  */
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header score={score} highScore={highScore} />
+      <CardDisplay
+        selectedCards={selectedCards}
+        setSelectedCards={setSelectedCards}
+        cards={cards}
+        setCards={setCards}
+        setScore={setScore}
+      />
     </div>
   );
 }

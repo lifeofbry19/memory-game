@@ -5,18 +5,18 @@ import CardDisplay from "./components/CardDisplay";
 
 function App() {
   const [cards, setCards] = useState([
-    "Harry",
-    "Ginny",
-    "Hermione",
-    "Voldemort",
-    "Dumbledore",
-    "Dobby",
-    "Ron",
-    "Draco",
-    "Snape",
-    "Sirius",
-    "Fred",
-    "George",
+    "blue",
+    "green",
+    "red",
+    "black",
+    "brown",
+    "orange",
+    "coral",
+    "beige",
+    "purple",
+    "dark cyan",
+    "dark gray",
+    "pink",
   ]);
 
   const [selectedCards, setSelectedCards] = useState([]);
@@ -28,15 +28,8 @@ function App() {
     if (score > highScore) {
       setHighScore(score);
     }
-  }, [score]);
+  }, [score, highScore]);
 
-  /* do some shuffling
-  function shuffle() {
-    const newArr = cards.map(card => {
-
-    })
-  }
-  */
   return (
     <div>
       <Header score={score} highScore={highScore} />
